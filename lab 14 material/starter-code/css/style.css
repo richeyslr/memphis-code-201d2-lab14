@@ -1,1 +1,43 @@
 /* TODO: Make it awesome */
+body {
+background-color: blanchedalmond;
+color: black;
+}
+
+img {
+/* height: 200px; */
+/* width: 400px; */
+    max-width: 200px;
+}
+
+h2 {
+    text-align: center;
+
+}
+
+.wrapper {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
+
+}
+
+.leftPic {
+    grid-column: 1 / 2;
+    grid-row: 1;
+
+}
+
+.midPic {
+    grid-column: 2 / 3;
+    grid-row: 1;
+
+}
+
+.rightPic {
+    grid-column: 3 / 4;
+    grid-row: 1;
+
+}
