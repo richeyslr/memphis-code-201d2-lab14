@@ -7,12 +7,14 @@ table.addEventListener('click', removeItemFromCart);
 let cart;
 
 function loadCart() {
+  // here we are converting the saved items from home to an object to give put it in a cart variable for rendering.
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
   console.log(cart);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
+
 function renderCart() {
   loadCart();
   clearCart();
@@ -20,10 +22,11 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
+// so when this function runs, AFTER a click, its agrabs the html element by its tags
 function clearCart() {
   const tableBody = document.querySelector('#cart tbody');
   let chartRow = document.querySelectorAll('#cart tbody tr'); // ****** THIS IS THE LINE WE NEEDED CHANGED from get elements by id to query selector all
-
+  // this iterate thru the chartRow, and clears those elements before re-redering the new cart
   for (let index = 0; index <= chartRow.length; index++) {
 
 
@@ -45,6 +48,7 @@ function showCart() {
   // TODO: Iterate over the items in the cart
   for (let i = 0; i < cart.items.length; i++) {
     // console.log(cart.items);
+    // we are creating new rows, giving each new one a class of delete for delete targeting, and when we set each sell with its values. we append the new cell
     let newRow = document.createElement('tr');
     newRow.classList.add('chartRow');
     let buttonCell = document.createElement('td');
@@ -61,6 +65,7 @@ function showCart() {
     newRow.appendChild(quantityCell);
     newRow.appendChild(productNameCell);
 
+    // and that new row will be added to the table
     tableBody.appendChild(newRow);
 
   }
@@ -74,6 +79,7 @@ function showCart() {
 function removeItemFromCart(event) {
   // event.preventDefault();
   // console.log(cart);
+  // after target the item with the delete class, we remove its id and, saves the new instance of the cart, and renders it
   if (event.target.classList.contains('delete')) {
     cart.removeItem(event.target.id);
     // console.log(cart);

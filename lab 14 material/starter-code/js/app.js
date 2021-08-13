@@ -10,6 +10,7 @@ const Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // Fill in this instance method to create a new CartItem and add it to this.items
+  // this is pushing the new cart item into the the Cart.items array
   const newCartItem = new CartItem(product, quantity);
   this.items.push(newCartItem);
 
@@ -17,6 +18,7 @@ Cart.prototype.addItem = function(product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  // this this sets the item to a key of cart, and converts cart items to a string
   localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
@@ -26,17 +28,20 @@ Cart.prototype.removeItem = function(item) {
   // Note: We are passing in the index number of the cart item in the this.items array
 };
 
+// this will set what a CartItem is with its props including what the Product is and its quantity
 const CartItem = function(product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
 // Product contructor.
+//this constructor will build the items and push it the products array
 const Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;
   Product.allProducts.push(this);
 };
+
 Product.allProducts = [];
 
 function generateCatalog() {
