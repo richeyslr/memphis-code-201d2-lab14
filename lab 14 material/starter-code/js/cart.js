@@ -22,15 +22,15 @@ function renderCart() {
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
   const tableBody = document.querySelector('#cart tbody');
-  let chartRow = document.getElementsByClassName('chartRow');
+  let chartRow = document.querySelectorAll('#cart tbody tr'); // ****** THIS IS THE LINE WE NEEDED CHANGED from get elements by id to query selector all
 
-  for (let index = 0; index < chartRow.length; index++) {
+  for (let index = 0; index <= chartRow.length; index++) {
 
 
-    // if (chartRow[index] = index) {
+    if (chartRow[index]) {
       chartRow[index].remove();
       console.log('clearing children');
-    // }
+    }
 
   }
 
@@ -72,23 +72,18 @@ function showCart() {
 }
 
 function removeItemFromCart(event) {
-  event.preventDefault();
+  // event.preventDefault();
   // console.log(cart);
   if (event.target.classList.contains('delete')) {
-    let cartRow = document.getElementsByClassName('chartRow');
-    for (let index = 0; index < cartRow.length; index++) {
-      if (event.target.id == index){
-        cartRow[index].remove();
-      }
-      
-    }
-    // console.log(event.target);
-    // console.log(event.target.id);
     cart.removeItem(event.target.id);
     // console.log(cart);
     // Cart.saveToLocalStorage();
     cart.saveToLocalStorage();
+    
     renderCart();
+    }
+    // console.log(event.target);
+    // console.log(event.target.id);
   }
 
 
@@ -96,7 +91,7 @@ function removeItemFromCart(event) {
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
 
-};
+
 
 // This will initialize the page and draw the cart on screen
 renderCart();
