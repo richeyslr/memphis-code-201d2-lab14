@@ -9,7 +9,7 @@ let cart;
 function loadCart() {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
-
+  console.log(cart);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -22,23 +22,15 @@ function renderCart() {
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
   const tableBody = document.querySelector('#cart tbody');
+  let chartRow = document.getElementsByClassName('chartRow');
 
-  for (let index = 0; index < cart.items.length; index++) {
+  for (let index = 0; index < chartRow.length; index++) {
 
 
-    let chartRow = document.getElementById('chartRow');
-
-    if (chartRow != null) {
-      console.log('This is a null row!');
-
-      if (chartRow[index] === true) {
-
-        // tableBody.remove(chartRow[index]);
-        chartRow.remove();
-        console.log('removing');
-
-      }
-    }
+    // if (chartRow[index] = index) {
+      chartRow[index].remove();
+      console.log('clearing children');
+    // }
 
   }
 
@@ -52,7 +44,7 @@ function showCart() {
   const tableBody = document.querySelector('#cart tbody');
   // TODO: Iterate over the items in the cart
   for (let i = 0; i < cart.items.length; i++) {
-    console.log(cart.items);
+    // console.log(cart.items);
     let newRow = document.createElement('tr');
     newRow.classList.add('chartRow');
     let buttonCell = document.createElement('td');
@@ -81,12 +73,19 @@ function showCart() {
 
 function removeItemFromCart(event) {
   event.preventDefault();
-  console.log(cart);
+  // console.log(cart);
   if (event.target.classList.contains('delete')) {
+    let cartRow = document.getElementsByClassName('chartRow');
+    for (let index = 0; index < cartRow.length; index++) {
+      if (event.target.id == index){
+        cartRow[index].remove();
+      }
+      
+    }
     // console.log(event.target);
     // console.log(event.target.id);
     cart.removeItem(event.target.id);
-    console.log(cart);
+    // console.log(cart);
     // Cart.saveToLocalStorage();
     cart.saveToLocalStorage();
     renderCart();
