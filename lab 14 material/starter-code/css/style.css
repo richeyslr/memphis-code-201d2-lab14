@@ -1,43 +1,56 @@
 /* TODO: Make it awesome */
+* {
+
+padding-block: 15px;
+margin-inline: 10px;
+
+}
+
+
+nav {
+text-decoration: none;
+padding-block: 15px;
+
+}
+
 body {
-background-color: blanchedalmond;
-color: black;
-}
-
-img {
-/* height: 200px; */
-/* width: 400px; */
-    max-width: 200px;
-}
-
-h2 {
-    text-align: center;
+font-size: 110%;
+padding: 20px;
+background-color: black;
+color: wheat;
 
 }
 
-.wrapper {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(10px, auto);
+
+th {
+  border: 1px solid #999;
+  padding: 0.7rem;
+  text-align: left;
+  color: rgb(255, 255, 255);
+}
+
+td {
+  border: 1px solid #999;
+  padding: 0.7rem;
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0.5rem;
+}
+
+li {
+margin-bottom: 15px;
 
 }
 
-.leftPic {
-    grid-column: 1 / 2;
-    grid-row: 1;
 
-}
 
-.midPic {
-    grid-column: 2 / 3;
-    grid-row: 1;
+td:nth-child(1) { background: hsl(150, 50%, 50%); }
+td:nth-child(2) { background: hsl(180, 80%, 50%); }
+td:nth-child(3) { background: hsl(200, 99%, 50%); }
 
-}
 
-.rightPic {
-    grid-column: 3 / 4;
-    grid-row: 1;
 
-}
