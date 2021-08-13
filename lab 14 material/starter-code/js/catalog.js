@@ -39,18 +39,39 @@ function handleSubmit(event) {
 function addSelectedItemToCart() {
   // suss out the item picked from the select list
   let product = document.getElementById('items').value;
-  let quantity = document.getElementById('quantity').value; 
+  let quantity = document.getElementById('quantity').value;
   cart.addItem(product, quantity);
-  
+
   // console.log(newCartItem);
-  console.log(cart);
+  // console.log(cart);
 
   // get the quantity
   // using those, add one item to the Cart
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+
+  for (let index = 0; index < cart.items.length; index++) {
+    console.log(`Current cart total is: ${cart.items.length} `);
+
+    let counterAreaBase = document.getElementsByTagName('nav');
+    let counterArea = document.getElementsByTagName('ul');
+    let counterNumber = document.createElement('li');
+
+    // counterNumber.appendChild(document.createTextNode(`Current cart total is: ${cart.items.length} `));
+
+    counterNumber.innerText = `Current cart total is: ${cart.items.length} `;
+
+    console.log(`${counterNumber.innerText}: should be the inner text in our li !`);
+
+    // counterArea.appendChild(counterNumber);
+    // counterAreaBase.appendChild(counterArea);
+    
+
+
+  }
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
